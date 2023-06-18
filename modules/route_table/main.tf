@@ -1,5 +1,5 @@
 resource "aws_route_table" "route_table" {
-  vpc_id = data.aws_vpc.existing_vpc.id
+  vpc_id = var.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -12,7 +12,7 @@ resource "aws_route_table" "route_table" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = data.aws_vpc.existing_vpc.id
+  vpc_id = var.vpc_id
 
   tags = {
     Name = "terraform-igw"
@@ -20,6 +20,6 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_route_table_association" "subnet-route-table" {
-  subnet_id      = data.aws_subnet.existing_subnet.id
+  subnet_id      = var.subnet_id
   route_table_id = aws_route_table.route_table.id
 }
