@@ -4,4 +4,4 @@
 *.tfstate
 *.tfstate.*
 *.tfvars
-
+.vscode
