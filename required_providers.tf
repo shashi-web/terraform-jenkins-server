@@ -7,13 +7,13 @@ terraform {
   #     name = "terraform-bootcamps"
   #   }
   # }
-  cloud {
-    organization = "shashi-terraform"
+  # cloud {
+  #   organization = "shashi-terraform"
 
-    workspaces {
-      name = "terraform-bootcamps"
-    }
-  }
+  #   workspaces {
+  #     name = "terraform-bootcamps"
+  #   }
+  # }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
