@@ -6,3 +6,5 @@ variable "subnet_cidr_block" {}
 # variable "subnet_name" {}
 variable "image_name" {}
 variable "public_key" {}
+variable "script_file" {}
+variable "server_name" {}
