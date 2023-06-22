@@ -7,4 +7,7 @@ variable "subnet_cidr_block" {}
 variable "image_name" {}
 variable "public_key" {}
 variable "script_file" {}
+# variable "script_file_2" {}
 variable "server_name" {}
+# variable "security_group_id" {}
+# variable "keyname" {}

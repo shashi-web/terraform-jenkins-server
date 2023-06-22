@@ -19,14 +19,36 @@ module "myapp_route_tables" {
 
 }
 
+module "myapp_security_groups" {
+  source    = "./modules/security_groups"
+  vpc_id      = module.myapp_vpc.vpc_id
+
+}
+
+
 module "myapp_server" {
   source      = "./modules/instance"
   vpc_id      = module.myapp_vpc.vpc_id
   subnet_id   = module.myapp_subnet.subnet_id
   image_name  = var.image_name
   public_key  = var.public_key
-  script_file = var.script_file
-  server_name = var.server_name
+  security_group_id = module.myapp_security_groups.security_group_id
+  script_file = "jenkins-entry-script.sh"
+  server_name = "jenkins"
+  keyname = "jenkins"
+
+}
+
+module "nginx_server" {
+  source      = "./modules/instance"
+  vpc_id      = module.myapp_vpc.vpc_id
+  subnet_id   = module.myapp_subnet.subnet_id
+  image_name  = var.image_name
+  public_key  = var.public_key
+  security_group_id = module.myapp_security_groups.security_group_id
+  script_file = "nginx-entry-script.sh"
+  server_name = "nginx"
+  keyname = "nginx"
 
 }
 
